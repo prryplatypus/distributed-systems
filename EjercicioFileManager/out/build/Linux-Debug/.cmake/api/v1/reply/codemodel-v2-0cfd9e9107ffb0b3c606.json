@@ -1,0 +1,74 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "EjercicioFileManager",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "EjercicioFileManager",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "EjercicioFileManager",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "EjercicioFileManager::@c2a153f8cab224da5baa",
+					"jsonFile" : "target-EjercicioFileManager-Debug-09cec90d0bd98ae89c08.json",
+					"name" : "EjercicioFileManager",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/perryplatypus/.vs/EjercicioFileManager/b5fcb11b-14d3-485d-bcb1-d596ebfa2818/out/build/Linux-Debug",
+		"source" : "/home/perryplatypus/.vs/EjercicioFileManager/b5fcb11b-14d3-485d-bcb1-d596ebfa2818/src"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

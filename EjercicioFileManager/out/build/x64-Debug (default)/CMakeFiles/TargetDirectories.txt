@@ -1,3 +1,0 @@
-C:/Users/Usuario/Desktop/distributed-systems/EjercicioFileManager/out/build/x64-Debug (default)/CMakeFiles/fileManager.dir
-C:/Users/Usuario/Desktop/distributed-systems/EjercicioFileManager/out/build/x64-Debug (default)/CMakeFiles/edit_cache.dir
-C:/Users/Usuario/Desktop/distributed-systems/EjercicioFileManager/out/build/x64-Debug (default)/CMakeFiles/rebuild_cache.dir

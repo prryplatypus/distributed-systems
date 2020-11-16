@@ -1,5 +1,9 @@
-cmake_minimum_required (VERSION 2.8.11)
+﻿# CMakeList.txt : Top-level CMake project file, do global configuration
+# and include sub-projects here.
+#
+cmake_minimum_required (VERSION 3.8)
 
-project (fileManager)
+project ("EjercicioFileManager")
 
-add_executable (fileManager main_fm.cpp filemanager.cpp filemanager.h)
+# Include sub-projects.
+add_subdirectory ("EjercicioFileManager")

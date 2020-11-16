@@ -14,7 +14,7 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 
 /out:CMakeCCompilerId.exe 
 CMakeCCompilerId.obj 
-LINK : fatal error LNK1104: cannot open file 'kernel32.lib'
+LINK : fatal error LNK1104: cannot open file 'LIBCMT.lib'
 
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
@@ -33,32 +33,32 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 
 /out:CMakeCXXCompilerId.exe 
 CMakeCXXCompilerId.obj 
-LINK : fatal error LNK1104: cannot open file 'kernel32.lib'
+LINK : fatal error LNK1104: cannot open file 'LIBCMT.lib'
 
 
 Detecting C compiler ABI info failed to compile with the following output:
-Change Dir: C:/Users/Usuario/Desktop/distributed-systems/EjercicioFileManager/out/build/x64-Debug (default)/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Usuario/Desktop/distributed-systems/Test/out/build/x64-Debug (default)/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_bfcbf && [1/2] Building C object CMakeFiles\cmTC_bfcbf.dir\CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_bfcbf.exe
-FAILED: cmTC_bfcbf.exe 
-cmd.exe /C "cd . && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_bfcbf.dir --rc=rc --mt=CMAKE_MT-NOTFOUND --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx64\x64\link.exe /nologo CMakeFiles\cmTC_bfcbf.dir\CMakeCCompilerABI.c.obj  /out:cmTC_bfcbf.exe /implib:cmTC_bfcbf.lib /pdb:cmTC_bfcbf.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-RC Pass 1: command "rc /fo CMakeFiles\cmTC_bfcbf.dir/manifest.res CMakeFiles\cmTC_bfcbf.dir/manifest.rc" failed (exit code 0) with the following output:
-El sistema no puede encontrar el archivo especificado
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_2f9b4 && [1/2] Building C object CMakeFiles\cmTC_2f9b4.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_2f9b4.exe
+FAILED: cmTC_2f9b4.exe 
+cmd.exe /C "cd . && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_2f9b4.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx64\x64\link.exe /nologo CMakeFiles\cmTC_2f9b4.dir\CMakeCCompilerABI.c.obj  /out:cmTC_2f9b4.exe /implib:cmTC_2f9b4.lib /pdb:cmTC_2f9b4.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+LINK Pass 1: command "C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx64\x64\link.exe /nologo CMakeFiles\cmTC_2f9b4.dir\CMakeCCompilerABI.c.obj /out:cmTC_2f9b4.exe /implib:cmTC_2f9b4.lib /pdb:cmTC_2f9b4.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\cmTC_2f9b4.dir/intermediate.manifest CMakeFiles\cmTC_2f9b4.dir/manifest.res" failed (exit code 1104) with the following output:
+LINK : fatal error LNK1104: cannot open file 'MSVCRTD.lib'
 ninja: build stopped: subcommand failed.
 
 
 
 
 Determining if the C compiler works failed with the following output:
-Change Dir: C:/Users/Usuario/Desktop/distributed-systems/EjercicioFileManager/out/build/x64-Debug (default)/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Usuario/Desktop/distributed-systems/Test/out/build/x64-Debug (default)/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_1ebad && [1/2] Building C object CMakeFiles\cmTC_1ebad.dir\testCCompiler.c.obj
-[2/2] Linking C executable cmTC_1ebad.exe
-FAILED: cmTC_1ebad.exe 
-cmd.exe /C "cd . && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_1ebad.dir --rc=rc --mt=CMAKE_MT-NOTFOUND --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx64\x64\link.exe /nologo CMakeFiles\cmTC_1ebad.dir\testCCompiler.c.obj  /out:cmTC_1ebad.exe /implib:cmTC_1ebad.lib /pdb:cmTC_1ebad.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-RC Pass 1: command "rc /fo CMakeFiles\cmTC_1ebad.dir/manifest.res CMakeFiles\cmTC_1ebad.dir/manifest.rc" failed (exit code 0) with the following output:
-El sistema no puede encontrar el archivo especificado
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_ddc92 && [1/2] Building C object CMakeFiles\cmTC_ddc92.dir\testCCompiler.c.obj
+[2/2] Linking C executable cmTC_ddc92.exe
+FAILED: cmTC_ddc92.exe 
+cmd.exe /C "cd . && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_ddc92.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx64\x64\link.exe /nologo CMakeFiles\cmTC_ddc92.dir\testCCompiler.c.obj  /out:cmTC_ddc92.exe /implib:cmTC_ddc92.lib /pdb:cmTC_ddc92.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+LINK Pass 1: command "C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx64\x64\link.exe /nologo CMakeFiles\cmTC_ddc92.dir\testCCompiler.c.obj /out:cmTC_ddc92.exe /implib:cmTC_ddc92.lib /pdb:cmTC_ddc92.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\cmTC_ddc92.dir/intermediate.manifest CMakeFiles\cmTC_ddc92.dir/manifest.res" failed (exit code 1104) with the following output:
+LINK : fatal error LNK1104: cannot open file 'MSVCRTD.lib'
 ninja: build stopped: subcommand failed.
 
 
