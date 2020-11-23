@@ -60,8 +60,6 @@ void operaciones_imp::recvOp()
     }
         break;
     }
-
-
 }
 
 operaciones_imp::~operaciones_imp()

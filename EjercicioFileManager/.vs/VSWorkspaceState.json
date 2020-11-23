@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\EjercicioFileManager\\dirprueba"
+    "\\EjercicioFileManager",
+    "\\EjercicioFileManagerDistributed"
   ],
-  "SelectedNode": "\\EjercicioFileManager",
+  "SelectedNode": "\\EjercicioFileManagerDistributed\\server.cpp",
   "PreviewInSolutionExplorer": false
 }

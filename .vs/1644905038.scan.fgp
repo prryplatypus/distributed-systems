@@ -1,36 +1,40 @@
--1444727189 C:\Users\Usuario\Desktop\distributed-systems\.gitignore
--654608777 C:\Users\Usuario\Desktop\distributed-systems\Document.pdf
--1444727189 C:\Users\Usuario\Desktop\distributed-systems\LICENSE
--1444737205 C:\Users\Usuario\Desktop\distributed-systems\README.md
-572775498 C:\Users\Usuario\Desktop\distributed-systems\
-1190574032 C:\Users\Usuario\Desktop\distributed-systems\ej0\cliente.cpp
--125800498 C:\Users\Usuario\Desktop\distributed-systems\ej0\CMakeLists.txt
--368695141 C:\Users\Usuario\Desktop\distributed-systems\ej0\holamundo.txt
--1913018494 C:\Users\Usuario\Desktop\distributed-systems\ej0\operaciones.cpp
-521865087 C:\Users\Usuario\Desktop\distributed-systems\ej0\operaciones.h
--556744280 C:\Users\Usuario\Desktop\distributed-systems\ej0\operaciones_imp.cpp
-1672853287 C:\Users\Usuario\Desktop\distributed-systems\ej0\operaciones_imp.h
--1607399781 C:\Users\Usuario\Desktop\distributed-systems\ej0\operaciones_stub.cpp
--730926810 C:\Users\Usuario\Desktop\distributed-systems\ej0\operaciones_stub.h
-1367330768 C:\Users\Usuario\Desktop\distributed-systems\ej0\server.cpp
--814745905 C:\Users\Usuario\Desktop\distributed-systems\ej0\utils.cpp
--986340402 C:\Users\Usuario\Desktop\distributed-systems\ej0\utils.h
--1351229760 C:\Users\Usuario\Desktop\distributed-systems\ej0\
--1142082814 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\CMakeLists.txt
-7712652 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\CMakeSettings.json
-490740778 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\EjercicioFileManager.cpp
-490763540 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\EjercicioFileManager.h
-832194683 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\filemanager.cpp
-831607484 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\filemanager.h
-2119706594 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\main_fm.cpp
-1537334938 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\
-830657718 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\dirprueba\resultado.txt
-830795799 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\dirprueba\resultado2.txt
-1073381239 C:\Users\Usuario\Desktop\distributed-systems\EjercicioFileManager\dirprueba\
-932241052 C:\Users\Usuario\Desktop\distributed-systems\multMatrix\CMakeLists.txt
-932519527 C:\Users\Usuario\Desktop\distributed-systems\multMatrix\main_multMatrix.cpp
-933144705 C:\Users\Usuario\Desktop\distributed-systems\multMatrix\multmatrix.cpp
-932915530 C:\Users\Usuario\Desktop\distributed-systems\multMatrix\multmatrix.h
-933037609 C:\Users\Usuario\Desktop\distributed-systems\multMatrix\resultado.txt
-933188443 C:\Users\Usuario\Desktop\distributed-systems\multMatrix\resultado2.txt
-1696873256 C:\Users\Usuario\Desktop\distributed-systems\multMatrix\
+572399870 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\.gitignore
+570427106 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\Document.pdf
+635538655 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\LICENSE
+635538655 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\README.md
+-1833105874 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\
+635549174 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\cliente.cpp
+635549174 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\CMakeLists.txt
+635549174 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\holamundo.txt
+635526412 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\operaciones.cpp
+635526412 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\operaciones.h
+635526412 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\operaciones_imp.cpp
+635503140 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\operaciones_imp.h
+635503140 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\operaciones_stub.cpp
+635503140 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\operaciones_stub.h
+636452463 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\server.cpp
+636452463 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\utils.cpp
+636430212 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\utils.h
+-1397679771 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\ej0\
+635767705 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\CMakeLists.txt
+635777201 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\CMakeSettings.json
+-2028350938 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\
+635623886 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\CMakeLists.txt
+635623886 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\EjercicioFileManager.cpp
+635623886 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\EjercicioFileManager.h
+635610624 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\filemanager.cpp
+635588372 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\filemanager.h
+635588372 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\main_fm.cpp
+635633386 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\Test.cpp
+635633386 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\Test.h
+-35347559 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\
+635633386 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\dirprueba\resultado.txt
+635610624 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\dirprueba\resultado2.txt
+723170774 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\EjercicioFileManager\EjercicioFileManager\dirprueba\
+636430212 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\multMatrix\CMakeLists.txt
+636275869 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\multMatrix\main_multMatrix.cpp
+636275869 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\multMatrix\multmatrix.cpp
+636275869 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\multMatrix\multmatrix.h
+636143845 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\multMatrix\resultado.txt
+636143845 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\multMatrix\resultado2.txt
+-636134008 C:\Users\Usuario\OneDrive - U-tad\3º INSO\Primer Cuatrimestre\Programacion de Sistemas Distribuidos\distributed-systems\multMatrix\

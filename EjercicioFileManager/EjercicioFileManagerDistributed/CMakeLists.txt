@@ -1,0 +1,2 @@
+add_executable (EjercicioFileManagerDistributed server.cpp FileManager.cpp FileManager.h FileManagerImp.cpp FileManagerImp.h OperacionesStub.cpp OperacionesStub.h Utils.cpp Utils.h)
+target_link_libraries(EjercicioFileManagerDistributed pthread)

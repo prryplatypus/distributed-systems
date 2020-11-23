@@ -7,3 +7,10 @@ project ("EjercicioFileManager")
 
 # Include sub-projects.
 add_subdirectory ("EjercicioFileManager")
+
+
+
+project ("EjercicioFileManagerDistributed")
+
+# Include sub-projects.
+add_subdirectory ("EjercicioFileManagerDistributed")
