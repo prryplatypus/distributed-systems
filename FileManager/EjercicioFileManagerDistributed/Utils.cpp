@@ -302,6 +302,9 @@ void recvMSG(int connID, void** data, int* dataLen){
 void closeConnection(int clientID){
 
     connection_t* conn=clientList[clientID];
+
+    std::cout << "Closing connection for client with ID " << conn->clientID << std::endl;
+
     close(conn->socket_fd);
     clientList.erase(clientID);
     if(conn->buffer->size()>0)

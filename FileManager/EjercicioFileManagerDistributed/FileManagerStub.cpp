@@ -38,6 +38,7 @@ vector<string*>* FileManagerStub::listFiles()
 void FileManagerStub::readFile(char* fileName, char*& data, unsigned long int& dataLength)
 {
     int opType = OP_READ;
+    sendMSG(socket, &opType, sizeof(int));
     sendMSG(socket, fileName, strlen(fileName) + 1);
 
     recvMSG(socket, (void**)&data, (int *)&dataLength);
