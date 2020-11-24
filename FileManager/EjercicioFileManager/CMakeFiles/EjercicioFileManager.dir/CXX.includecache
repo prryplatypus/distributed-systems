@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManager/filemanager.cpp
+filemanager.h
+/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManager/filemanager.h
+
+/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManager/filemanager.h
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+string
+-
+map
+-
+vector
+-
+dirent.h
+-
+
+/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManager/main_fm.cpp
+iostream
+-
+filemanager.h
+/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManager/filemanager.h
+

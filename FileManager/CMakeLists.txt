@@ -3,14 +3,10 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("EjercicioFileManager")
+set(CMAKE_BUILD_TYPE Debug)
 
-# Include sub-projects.
+project ("EjercicioFileManager")
 add_subdirectory ("EjercicioFileManager")
 
-
-
 project ("EjercicioFileManagerDistributed")
-
-# Include sub-projects.
 add_subdirectory ("EjercicioFileManagerDistributed")

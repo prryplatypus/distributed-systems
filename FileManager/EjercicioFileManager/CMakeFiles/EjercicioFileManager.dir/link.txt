@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/EjercicioFileManager.dir/main_fm.cpp.o CMakeFiles/EjercicioFileManager.dir/filemanager.cpp.o  -o EjercicioFileManager 

@@ -4,7 +4,7 @@
 
 FileManagerStub::FileManagerStub(char *dir)
 {
-    socket = initClient("127.0.0.1", 8081);
+    socket = initClient("10.0.2.8", 8081);
     sendMSG(socket, dir, strlen(dir));
 }
 
