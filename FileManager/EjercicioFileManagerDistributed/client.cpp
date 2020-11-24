@@ -31,6 +31,7 @@ int main(int argc, char** argv)
 
 	std::cout << "Liberando datos de fichero leído..." << std::endl;
 	delete[] data;
+	delete fm;
 
 	return 0;
 }

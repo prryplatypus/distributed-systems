@@ -240,7 +240,7 @@ void recvMSG(int connID, void** data, int* dataLen){
         read(socket, &tag, sizeof(short int));
     if(tag!= SYNC)
     {
-        printf("ERROR: recvMSG, linea: %d\n",__LINE__);
+        printf("ERROR: recvMSG, linea: %d - Received TAG value %d\n",__LINE__, tag);
         //error
         closeConnection(connID);
          //exit
