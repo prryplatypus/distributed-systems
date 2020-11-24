@@ -179,7 +179,7 @@ void sendMSG(int connID, const void* data, int dataLen){
             //error
         printf("ERROR: sendMSG, linea %d \n",__LINE__);
             //exit
-        closeConnection(socket);
+        closeConnection(connID);
         exit(0);
     }
 
@@ -205,7 +205,7 @@ void sendMSG(int connID, const void* data, int dataLen){
                 //error
                 tag=ERROR;
                 write(socket,&tag,sizeof(short int));
-                closeConnection(socket);
+                closeConnection(connID);
                     //exit
                 exit(0);
             }
@@ -222,7 +222,7 @@ void sendMSG(int connID, const void* data, int dataLen){
             {
                 printf("ERROR: sendMSG, linea: %d\n",__LINE__);
                 //error
-                closeConnection(socket);
+                closeConnection(connID);
                     //exit
                 exit(0);
             }
@@ -242,7 +242,7 @@ void recvMSG(int connID, void** data, int* dataLen){
     {
         printf("ERROR: recvMSG, linea: %d\n",__LINE__);
         //error
-        closeConnection(socket);
+        closeConnection(connID);
          //exit
         exit(0);
     }
@@ -260,7 +260,7 @@ void recvMSG(int connID, void** data, int* dataLen){
     {
         printf("ERROR: recvMSG, linea: %d\n",__LINE__);
         //error
-        closeConnection(socket);
+        closeConnection(connID);
          //exit
         exit(0);
     }
@@ -287,7 +287,7 @@ void recvMSG(int connID, void** data, int* dataLen){
             {
                 printf("ERROR: recvMSG, linea: %d\n",__LINE__);
                 //error
-                closeConnection(socket);
+                closeConnection(connID);
                  //exit
                 exit(0);
             }

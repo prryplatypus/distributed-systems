@@ -1,9 +1,0 @@
-/home/perryplatypus/shared/distributed-systems/FileManager/CMakeFiles/rebuild_cache.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/CMakeFiles/edit_cache.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManager/CMakeFiles/rebuild_cache.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManager/CMakeFiles/edit_cache.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManager/CMakeFiles/EjercicioFileManager.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManagerDistributed/CMakeFiles/rebuild_cache.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManagerDistributed/CMakeFiles/edit_cache.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManagerDistributed/CMakeFiles/client.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManagerDistributed/CMakeFiles/server.dir

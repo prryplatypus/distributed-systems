@@ -40,7 +40,7 @@ int initClient(char* host, int port);
 int waitForConnections(int sock_fd);
 void sendMSG(int socket, const void* data, int dataLen);
 void recvMSG(int socket, void** data, int* dataLen);
-void closeConnection(int socket_fd);
+void closeConnection(int connID);
 
 void waitForConnectionsAsync(int sock_fd);
 bool checkNewConnections();
