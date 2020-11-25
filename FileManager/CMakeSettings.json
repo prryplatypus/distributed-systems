@@ -1,7 +1,7 @@
 ﻿{
   "configurations": [
     {
-      "name": "Linux-Debug",
+      "name": "Linux server 1",
       "generator": "Unix Makefiles",
       "configurationType": "Debug",
       "cmakeExecutable": "/usr/bin/cmake",
@@ -10,17 +10,39 @@
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "linux_x64" ],
-      "remoteMachineName": "${defaultRemoteMachineName}",
-      "remoteCMakeListsRoot": "$HOME/.vs/${projectDirName}/src",
-      "remoteBuildRoot": "$HOME/.vs/${projectDirName}/out/build/${name}",
-      "remoteInstallRoot": "$HOME/.vs/${projectDirName}/out/install/${name}",
+      "remoteMachineName": "1644905038;192.168.1.85 (username=perryplatypus, port=22, authentication=Password)",
+      "remoteCMakeListsRoot": "$HOME/${projectDirName}/src",
+      "remoteBuildRoot": "$HOME/${projectDirName}/out/build/${name}",
+      "remoteInstallRoot": "$HOME/${projectDirName}/out/install/${name}",
       "remoteCopySources": true,
       "rsyncCommandArgs": "-t --delete --delete-excluded",
       "remoteCopyBuildOutput": false,
       "remoteCopySourcesMethod": "rsync",
       "addressSanitizerRuntimeFlags": "detect_leaks=0",
-      "variables": [ ],
-      "remotePrebuildCommand": "mkdir -p dirprueba && echo 'Hello' > dirprueba/resultado.txt && echo -en > dirprueba/resultado2.txt"
+      "variables": [],
+      "remotePostbuildCommand": "mkdir -p \"$HOME/${projectDirName}/out/build/${name}/dirprueba\" && echo 'Hello' > \"$HOME/${projectDirName}/out/build/${name}/dirprueba/resultado.txt\" && echo -en > \"$HOME/${projectDirName}/out/build/${name}/dirprueba/resultado2.txt\""
+    },
+    {
+      "name": "Linux server 2",
+      "generator": "Unix Makefiles",
+      "configurationType": "Debug",
+      "cmakeExecutable": "/usr/bin/cmake",
+      "remoteCopySourcesExclusionList": [ ".vs", ".git", "out" ],
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "linux_x64" ],
+      "remoteMachineName": "1993684424;192.168.1.133 (username=perryplatypus, port=22, authentication=Password)",
+      "remoteCMakeListsRoot": "$HOME/${projectDirName}/src",
+      "remoteBuildRoot": "$HOME/${projectDirName}/out/build/${name}",
+      "remoteInstallRoot": "$HOME/${projectDirName}/out/install/${name}",
+      "remoteCopySources": true,
+      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "remoteCopyBuildOutput": false,
+      "remoteCopySourcesMethod": "rsync",
+      "addressSanitizerRuntimeFlags": "detect_leaks=0",
+      "variables": [],
+      "remotePostbuildCommand": "mkdir -p $HOME/${projectDirName}/out/build/${name}/dirprueba && cd $HOME/${projectDirName}/out/build/${name}/dirprueba && echo 'Hello' > resultado.txt && echo -en > resultado2.txt"
     }
   ]
 }

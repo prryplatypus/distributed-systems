@@ -1,17 +1,18 @@
 #ifndef FILEMANAGERIMP_H
 #define FILEMANAGERIMP_H
 #include "FileManager.h"
+#include "ClientConnection.h"
 
 using namespace std;
 
 class FileManagerImp
 {
-	int client_id;
+	ClientConnection* cli_conn;
 	FileManager* fm;
 public:
 	// Ignore the variable name
-	bool ragequit;
-	FileManagerImp(int client_id);
+	bool terminate;
+	FileManagerImp(ClientConnection* cli_conn);
 	void handleRequest();
 	~FileManagerImp();
 };

@@ -1,4 +1,0 @@
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManagerDistributed/CMakeFiles/rebuild_cache.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManagerDistributed/CMakeFiles/edit_cache.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManagerDistributed/CMakeFiles/client.dir
-/home/perryplatypus/shared/distributed-systems/FileManager/EjercicioFileManagerDistributed/CMakeFiles/server.dir

@@ -5,6 +5,8 @@
 #include <map>
 #include <vector>
 
+#include "MyConnection.h"
+
 #define OP_ERR -1
 #define OP_END 0
 #define OP_LIST 1
@@ -13,10 +15,9 @@
 
 using namespace std;
 
-
-class FileManagerStub
+class FileManagerStub : public MyConnection
 {
-    int socket = 0;
+    int id;
 public:
     FileManagerStub(char *dir);
 	vector<string*>* listFiles();
@@ -25,5 +26,7 @@ public:
 	void freeListedFiles(vector<string*>* fileList);
     ~FileManagerStub();
 };
+
+int initClient(char* host, int port);
 
 #endif // FILEMANAGER_STUB_H

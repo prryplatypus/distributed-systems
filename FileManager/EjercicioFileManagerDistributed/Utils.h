@@ -16,8 +16,8 @@
 
 
 #define ERROR    -1
-#define SYNC_ACK 1
 #define ACK      0
+#define SYNC_ACK 1
 #define SYNC     2
 #define END      3
 
