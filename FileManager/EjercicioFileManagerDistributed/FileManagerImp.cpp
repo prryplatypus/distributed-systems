@@ -1,8 +1,7 @@
 #include "FileManagerImp.h"
 #include "FileManagerStub.h"
-#include "Utils.h"
 #include <iostream>
-#include <string>
+#include <cstring>
 
 FileManagerImp::FileManagerImp(ClientConnection* cli_conn)
 {
@@ -13,25 +12,21 @@ FileManagerImp::FileManagerImp(ClientConnection* cli_conn)
      * Get the directory that the client
      * wants to work with.
      */ 
-    char *buffr;
-    this->cli_conn->Receive(buffr);
+    char *dir;
+    this->cli_conn->receive(dir);
+    std::string basedir(dir);
+    delete[] dir;
 
-    std::cout << "Buffer contains: " << buffr << std::endl;
-
-    std::string dir = std::string(buffr);
-    delete[] buffr;
-
-    fm = new FileManager(dir);
+    fm = new FileManager(basedir);
 }
 
 
 void FileManagerImp::handleRequest()
 {
-    int typeOp;
+    int type_op;
+    cli_conn->receive(&type_op);
 
-    this->cli_conn->Receive(&typeOp);
-
-    switch (typeOp)
+    switch (type_op)
     {
         case OP_END: {
             terminate = true;
@@ -40,62 +35,51 @@ void FileManagerImp::handleRequest()
 
         case OP_LIST: {
             vector<string*> *vfiles = fm->listFiles();
-            int qty = vfiles->size();
-            cli_conn->Send(qty);
-            // sendMSG(client_id, &(qty), sizeof(int)); // Tell client how many filenames we're gonna send
-            for (unsigned i = 0; i < qty; ++i)
+
+            int how_many = vfiles->size();
+            cli_conn->send(how_many);
+            for (unsigned i = 0; i < how_many; ++i)
             {
                 const char *filename = vfiles->at(i)->c_str();
-                cli_conn->Send((char *)filename);
-                // sendMSG(client_id, filename, strlen(filename) + 1); // 99% sure something's gonna go wrong here
+                cli_conn->send((char *)filename);
             }
+
             fm->freeListedFiles(vfiles);
             break;
         }
 
         case OP_READ: {
             char* filename;
-            char* data = NULL;
-            unsigned long int data_len = 0;
+            char* content;
+            unsigned long data_len;
 
-            // Get filename to read
-            // recvMSG(client_id, (void**)&buffr, &bufferLen);
-            // std::cout << "Reading " << buffr << std::endl;
-            cli_conn->Receive(filename);
-            fm->readFile(filename, data, data_len);
+            cli_conn->receive(filename);
+
+            fm->readFile(filename, content, data_len);
             delete[] filename;
 
-            // Send file contents
-            std::cout << "Sending " << data << std::endl;
-            // sendMSG(client_id, data, strlen(data) + 1);
-            cli_conn->Send(data);
-            delete[] data;
+            cli_conn->send(content);
+            delete[] content;
+            break;
         }
 
         case OP_WRITE: {
-            char* filename, * data;
-            int data_len = 0;
+            char* filename;
+            char* content;
 
-            // Get filename to write to
-            // recvMSG(client_id, (void**)&buffr, &bufferLen);
-            cli_conn->Receive(filename);
+            cli_conn->receive(filename);
+            cli_conn->receive(content);
 
-            // Get file contents to write
-            // recvMSG(client_id, (void **)&data, &data_len);
-            cli_conn->Receive(data);
-
-            std::cout << "Writing " << data << " to file " << filename << std::endl;
-            fm->writeFile(filename, data, data_len + 1);
-
+            fm->writeFile(filename, content, strlen(content) + 1);
             delete[] filename;
-            delete[] data;
+            delete[] content;
+            break;
         }
 
         default: {
-            std::cout << "ERROR: operación no reconocida" << std::endl;
+            std::cout << "ERROR: Unknown operation type (" << type_op << ") on line " << __LINE__ << std::endl;
             int op = OP_ERR;
-            // sendMSG(client_id, &op, sizeof(int));
-            cli_conn->Send(op);
+            cli_conn->send(op);
         }
     }
 }

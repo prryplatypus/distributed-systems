@@ -2,9 +2,9 @@
 
 int main(int argc, char **argv)
 {
-    Server *server = new Server();
+    Server server;
 
-    server->Run(8081);
+    server.run(8081);
 
     return 0;
 }

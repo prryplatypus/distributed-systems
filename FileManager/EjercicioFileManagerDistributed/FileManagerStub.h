@@ -15,18 +15,17 @@
 
 using namespace std;
 
+
 class FileManagerStub : public MyConnection
 {
     int id;
 public:
-    FileManagerStub(char *dir);
+    FileManagerStub(char *host, int port, char *dir);
 	vector<string*>* listFiles();
-	void readFile(char* fileName, char*& data, unsigned long int& dataLength);
-	void writeFile(char* fileName, char* data, unsigned long int dataLength);
-	void freeListedFiles(vector<string*>* fileList);
+	void readFile(char* fileName, char*& data, unsigned long int& data_len);
+	void writeFile(char* fileName, char* data, unsigned long int data_len);
+	void freeListedFiles(vector<string*>* file_list);
     ~FileManagerStub();
 };
-
-int initClient(char* host, int port);
 
 #endif // FILEMANAGER_STUB_H

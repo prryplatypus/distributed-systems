@@ -1,7 +1,6 @@
 #ifndef _SERVER_H
 #define _SERVER_H
 
-
 #include "ClientConnection.h"
 
 
@@ -24,28 +23,26 @@ private:
 	std::list<int> finished_conn_threads;
 	std::mutex finished_conn_threads_mtx;
 
-	void _InitSocket(int port);
-	void _Listen();
-	void _HandleConnection(int cli_id);
-	void _RemoveClientConn(int cli_id);
+	void initSocket(int port);
+	void removeClientConn(int cli_id);
 protected:
-	void FreeFinishedThreads();
+	void freeFinishedThreads();
 public:
 	Server();
-	int AwaitConnection();
-	void AddPendingConnection(int new_cli_id);
-	bool HasPendingConnections();
-	bool HasRemainingConnections();
-	int GetNextPendingConnectionId();
-	ClientConnection* GetClientConn(int cli_id);
-	void SetFinishedThread(int cli_id);
-	void Run(int port);
-	bool ShouldTerminate();
-	void Terminate();
+	int awaitConnection();
+	void addPendingConnection(int new_cli_id);
+	bool hasPendingConnections();
+	bool hasRemainingConnections();
+	int getNextPendingConnectionId();
+	ClientConnection* getClientConn(int cli_id);
+	void setFinishedThread(int cli_id);
+	void run(int port);
+	bool shouldTerminate();
+	void stop();
 	~Server();
 };
 
-void Listener(Server* server);
-void Handler(Server* server, int cli_id);
+void listener(Server* server);
+void handler(Server* server, int cli_id);
 
 #endif // _SERVER_H

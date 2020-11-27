@@ -25,10 +25,11 @@ protected:
 	int sock_fd;
 public:
 	MyConnection(int sock_fd);
-	void Send(int num);
-	void Send(char* str);
-	void Receive(int* num);
-	void Receive(char* str);
+	MyConnection(char *host, int port);
+	void send(int num);
+	void send(char* str);
+	void receive(int* num);
+	void receive(char* &str);
 	~MyConnection();
 };
 

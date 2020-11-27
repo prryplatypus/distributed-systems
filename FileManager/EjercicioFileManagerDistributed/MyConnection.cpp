@@ -10,7 +10,38 @@ MyConnection::MyConnection(int sock_fd)
 }
 
 
-void MyConnection::Send(int num)
+MyConnection::MyConnection(char* host, int port)
+{
+    struct sockaddr_in serv_addr;
+
+    if ((sock_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+    {
+        std::cout << "ERROR: Failed to create socket" << std::endl;
+        return;
+    }
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(port);
+
+    // Convert IPv4 and IPv6 addresses from text to binary form 
+    if (inet_pton(AF_INET, host, &serv_addr.sin_addr) <= 0)
+    {
+        std::cout << "ERROR: Invalid address / Address not supported" << std::endl;
+        sock_fd = -1;
+        return;
+    }
+
+    if (connect(sock_fd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0)
+    {
+        std::cout << "ERROR: Connection Failed" << std::endl;
+        close(sock_fd);
+        sock_fd = -1;
+        return;
+    }
+}
+
+
+void MyConnection::send(int num)
 {
     short tag = SYN;
     int crc;
@@ -22,7 +53,7 @@ void MyConnection::Send(int num)
     read(sock_fd, &tag, sizeof(short));
     if (tag != SYN_ACK)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << SYN_ACK << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << SYN_ACK << " received " << tag << ") at line " << __LINE__ << std::endl;
         tag = ERR;
         write(sock_fd, &tag, sizeof(short));
         exit(0);
@@ -39,7 +70,7 @@ void MyConnection::Send(int num)
     read(sock_fd, &crc, sizeof(int));
     if (crc != sizeof(int))
     {
-        std::cout << "ERROR: Invalid CRC received (expected " << sizeof(unsigned short) << " received " << crc << ")" << std::endl;
+        std::cout << "ERROR: Invalid CRC received (expected " << sizeof(unsigned short) << " received " << crc << ") at line " << __LINE__ << std::endl;
         tag = ERR;
         write(sock_fd, &tag, sizeof(short));
         exit(0);
@@ -53,7 +84,7 @@ void MyConnection::Send(int num)
     read(sock_fd, &tag, sizeof(short));
     if (tag != END)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << END << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << END << " received " << tag << ") at line " << __LINE__ << std::endl;
         tag = ERR;
         write(sock_fd, &tag, sizeof(short));
         exit(0);
@@ -61,7 +92,7 @@ void MyConnection::Send(int num)
 }
 
 
-void MyConnection::Send(char* str)
+void MyConnection::send(char* str)
 {
     short tag = SYN;
     unsigned data_len = strlen(str) + 1;
@@ -74,7 +105,7 @@ void MyConnection::Send(char* str)
     read(sock_fd, &tag, sizeof(short));
     if (tag != SYN_ACK)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << SYN_ACK << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << SYN_ACK << " received " << tag << ") at line " << __LINE__ << std::endl;
         tag = ERR;
         write(sock_fd, &tag, sizeof(short));
         exit(0);
@@ -94,7 +125,7 @@ void MyConnection::Send(char* str)
     read(sock_fd, &crc, sizeof(int));
     if (crc != data_len)
     {
-        std::cout << "ERROR: Invalid CRC received (expected " << data_len << " received " << crc << ")" << std::endl;
+        std::cout << "ERROR: Invalid CRC received (expected " << data_len << " received " << crc << ") at line " << __LINE__ << std::endl;
         tag = ERR;
         write(sock_fd, &tag, sizeof(short));
         exit(0);
@@ -108,14 +139,14 @@ void MyConnection::Send(char* str)
     read(sock_fd, &tag, sizeof(short));
     if (tag != END)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << END << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << END << " received " << tag << ") at line " << __LINE__ << std::endl;
         tag = ERR;
         write(sock_fd, &tag, sizeof(short));
         exit(0);
     }
 }
 
-void MyConnection::Receive(int* num)
+void MyConnection::receive(int* num)
 {
     short tag = 0;
     
@@ -123,7 +154,7 @@ void MyConnection::Receive(int* num)
     read(sock_fd, &tag, sizeof(short));
     if (tag != SYN)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << SYN << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << SYN << " received " << tag << ") at line " << __LINE__ << std::endl;
         exit(0);
     }
 
@@ -135,7 +166,7 @@ void MyConnection::Receive(int* num)
     read(sock_fd, &tag, sizeof(short));
     if (tag != ACK)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << ACK << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << ACK << " received " << tag << ") at line " << __LINE__ << std::endl;
         exit(0);
     }
 
@@ -149,7 +180,7 @@ void MyConnection::Receive(int* num)
     read(sock_fd, &tag, sizeof(short));
     if (tag != ACK)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << ACK << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << ACK << " received " << tag << ") at line " << __LINE__ << std::endl;
         exit(0);
     }
 
@@ -158,7 +189,7 @@ void MyConnection::Receive(int* num)
     write(sock_fd, &tag, sizeof(short));
 }
 
-void MyConnection::Receive(char* str)
+void MyConnection::receive(char* &str)
 {
     short tag = 0;
     unsigned data_len;
@@ -167,7 +198,7 @@ void MyConnection::Receive(char* str)
     read(sock_fd, &tag, sizeof(short));
     if (tag != SYN)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << SYN << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << SYN << " received " << tag << ") at line " << __LINE__ << std::endl;
         exit(0);
     }
 
@@ -179,7 +210,7 @@ void MyConnection::Receive(char* str)
     read(sock_fd, &tag, sizeof(short));
     if (tag != ACK)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << ACK << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << ACK << " received " << tag << ") at line " << __LINE__ << std::endl;
         exit(0);
     }
 
@@ -197,7 +228,7 @@ void MyConnection::Receive(char* str)
     read(sock_fd, &tag, sizeof(short));
     if (tag != ACK)
     {
-        std::cout << "ERROR: Invalid tag received (expected " << ACK << " received " << tag << ")" << std::endl;
+        std::cout << "ERROR: Invalid tag received (expected " << ACK << " received " << tag << ") at line " << __LINE__ << std::endl;
         exit(0);
     }
 
@@ -208,5 +239,6 @@ void MyConnection::Receive(char* str)
 
 MyConnection::~MyConnection()
 {
-    close(sock_fd);
+    if (sock_fd >= 0)
+        close(sock_fd);
 }

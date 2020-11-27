@@ -1,33 +1,31 @@
 #include <iostream>
+#include <limits.h>
 
 #include "Server.h"
 #include "FileManagerImp.h"
 
 
-void Listener(Server* server)
+void listener(Server* server)
 {
     std::cout << "Now listening for connections" << std::endl;
-    while (! server->ShouldTerminate()) {
-        int new_cli_id = server->AwaitConnection();
-        server->AddPendingConnection(new_cli_id);
+    while (! server->shouldTerminate()) {
+        int new_cli_id = server->awaitConnection();
+        server->addPendingConnection(new_cli_id);
     }
     std::cout << "No longer accepting new connections" << std::endl;
 }
 
 
-void Handler(Server *server, int cli_id)
+void handler(Server *server, int cli_id)
 {
-    ClientConnection* cli_conn = server->GetClientConn(cli_id);
-
-    std::cout << "Cli Conn: " << cli_conn->id << std::endl;
-
+    ClientConnection* cli_conn = server->getClientConn(cli_id);
     FileManagerImp* fm = new FileManagerImp(cli_conn);
 
     while (!fm->terminate)
         fm->handleRequest();
 
     delete fm;
-    server->SetFinishedThread(cli_id);
+    server->setFinishedThread(cli_id);
 }
 
 
@@ -40,7 +38,7 @@ Server::Server()
 }
 
 
-void Server::_InitSocket(int port)
+void Server::initSocket(int port)
 {
     sock_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (sock_fd < 0)
@@ -68,15 +66,20 @@ void Server::_InitSocket(int port)
 }
 
 
-void Server::_RemoveClientConn(int cli_id)
+void Server::removeClientConn(int cli_id)
 {
+    ClientConnection *cli_conn;
+
     cli_list_mtx.lock();
+    cli_conn = cli_list[cli_id];
     cli_list.erase(cli_id);
     cli_list_mtx.unlock();
+
+    delete cli_conn;
 }
 
 
-void Server::FreeFinishedThreads()
+void Server::freeFinishedThreads()
 {
     int finished_threads;
     
@@ -102,16 +105,19 @@ void Server::FreeFinishedThreads()
         conn_thread->join();
         delete conn_thread;
 
-        _RemoveClientConn(cli_id);
+        removeClientConn(cli_id);
     }
 }
 
 
-int Server::AwaitConnection()
+int Server::awaitConnection()
 {
     struct sockaddr_in cli_addr;
     socklen_t cli_len = sizeof(cli_addr);
     int cli_sock_fd = accept(sock_fd, (struct sockaddr*)&cli_addr, &cli_len);
+
+    if (last_id == UINT_MAX)
+        last_id = 0;
 
     ClientConnection* conn = new ClientConnection(cli_sock_fd, last_id++);
 
@@ -123,7 +129,7 @@ int Server::AwaitConnection()
 }
 
 
-void Server::AddPendingConnection(int new_cli_id)
+void Server::addPendingConnection(int new_cli_id)
 {
     pending_conns_mtx.lock();
     pending_conns.push_back(new_cli_id);
@@ -131,7 +137,7 @@ void Server::AddPendingConnection(int new_cli_id)
 }
 
 
-bool Server::HasPendingConnections()
+bool Server::hasPendingConnections()
 {
     int pending_count;
 
@@ -143,7 +149,7 @@ bool Server::HasPendingConnections()
 }
 
 
-bool Server::HasRemainingConnections()
+bool Server::hasRemainingConnections()
 {
     int remaining_clients;
 
@@ -155,7 +161,7 @@ bool Server::HasRemainingConnections()
 }
 
 
-int Server::GetNextPendingConnectionId()
+int Server::getNextPendingConnectionId()
 {
     int next_conn_id;
 
@@ -168,7 +174,7 @@ int Server::GetNextPendingConnectionId()
 }
 
 
-ClientConnection* Server::GetClientConn(int cli_id)
+ClientConnection* Server::getClientConn(int cli_id)
 {
     ClientConnection* cli_conn;
 
@@ -180,7 +186,7 @@ ClientConnection* Server::GetClientConn(int cli_id)
 }
 
 
-void Server::SetFinishedThread(int cli_id)
+void Server::setFinishedThread(int cli_id)
 {
     finished_conn_threads_mtx.lock();
     finished_conn_threads.push_back(cli_id);
@@ -188,34 +194,38 @@ void Server::SetFinishedThread(int cli_id)
 }
 
 
-void Server::Run(int port)
+void Server::run(int port)
 {
-    _InitSocket(port);
+    initSocket(port);
     if (sock_fd < 0)
     {
         return;
     }
 
-    connection_listener = new std::thread(Listener, this);
+    connection_listener = new std::thread(listener, this);
 
-    while ((! ShouldTerminate()) || HasRemainingConnections())
+    while (hasRemainingConnections() || ! shouldTerminate())
     {
-        if (HasPendingConnections())
+        if (hasPendingConnections())
         {
-            std::cout << "New connection received" << std::endl;
-            int new_id = GetNextPendingConnectionId();
+            std::cout << "New connection received. ";
+            int new_id = getNextPendingConnectionId();
+            std::cout << "Assigned ID #" << new_id << std::endl;
 
             conn_threads_mtx.lock();
-            conn_threads[new_id] = new std::thread(Handler, this, new_id);
+            conn_threads[new_id] = new std::thread(handler, this, new_id);
             conn_threads_mtx.unlock();
         }
-        FreeFinishedThreads();
+        freeFinishedThreads();
         usleep(1000);
     }
+
+    connection_listener->join();
+    delete connection_listener;
 }
 
 
-bool Server::ShouldTerminate()
+bool Server::shouldTerminate()
 {
     bool tmp_terminate;
 
@@ -227,7 +237,7 @@ bool Server::ShouldTerminate()
 }
 
 
-void Server::Terminate()
+void Server::stop()
 {
     terminate_mtx.lock();
     terminate = true;
