@@ -55,6 +55,7 @@ void FileManagerImp::handleRequest()
             unsigned long data_len;
 
             cli_conn->receive(filename, data_len);
+
             fm->readFile(filename, content, data_len);
             delete[] filename;
 

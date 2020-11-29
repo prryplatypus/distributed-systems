@@ -9,6 +9,8 @@
 #define OP_MULT 1
 #define OP_RAND 2
 #define OP_IDENT 3
+#define OP_READ 4
+#define OP_WRITE 5
 
 using namespace std;
 

@@ -13,6 +13,8 @@
 #include <thread>
 #include <mutex>
 
+#include "multmatrix.h"
+
 #define ERR		-1
 #define ACK      0
 #define SYN_ACK  1
@@ -29,9 +31,11 @@ protected:
 	~MyConnection();
 public:
 	void send(int num);
-	void send(char* str, unsigned long data_len);
+	void send(matrix_t* matrix);
+	void send(char* filename);
 	void receive(int* num);
-	void receive(char*& str, unsigned long& data_len);
+	void receive(matrix_t*& matrix_t);
+	void receive(char* &filename);
 };
 
 #endif // _MY_CONNECTION_H

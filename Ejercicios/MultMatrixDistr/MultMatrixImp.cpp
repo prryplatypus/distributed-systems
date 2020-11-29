@@ -34,14 +34,14 @@ void MultMatrixImp::handleRequest()
             // Calculate result
             matrix_t* result = mm->multMatrices(matrix1, matrix2);
             delete[] matrix1->data;
-            delete matrix1;
+            delete[] matrix1;
             delete[] matrix2->data;
-            delete matrix2;
+            delete[] matrix2;
 
             // Send result
             cli_conn->send(result);
             delete[] result->data;
-            delete result;
+            delete[] result;
 
             break;
         }
@@ -56,7 +56,7 @@ void MultMatrixImp::handleRequest()
             cli_conn->send(rand_matrix);
 
             delete[] rand_matrix->data;
-            delete rand_matrix;
+            delete[] rand_matrix;
             break;
         }
 
@@ -70,7 +70,34 @@ void MultMatrixImp::handleRequest()
             cli_conn->send(ident_matrix);
 
             delete[] ident_matrix->data;
-            delete ident_matrix;
+            delete[] ident_matrix;
+            break;
+        }
+
+        case OP_READ: {
+            char* filename;
+
+            cli_conn->receive(filename);
+            matrix_t* matrix = mm->readMatrix(filename);
+            cli_conn->send(matrix);
+
+            delete[] matrix->data;
+            delete[] matrix;
+            break;
+        }
+
+        case OP_WRITE: {
+            char* filename;
+            matrix_t* matrix = new matrix_t[1];
+
+            cli_conn->receive(filename);
+            cli_conn->receive(matrix);
+
+            mm->writeMatrix(matrix, filename);
+
+            delete[] filename;
+            delete[] matrix->data;
+            delete[] matrix;
             break;
         }
 

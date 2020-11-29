@@ -5,6 +5,9 @@
 
 FileManagerStub::FileManagerStub(char* host, int port, char* dir) : MyConnection(host, port)
 {
+	std::string local_path(".");
+	fm_lcl = new FileManager(local_path);
+
 	this->receive(&(this->id));
 	std::cout << "Client connected. Assigned ID: " << this->id << ". Working directory: " << dir << std::endl;
 
@@ -12,7 +15,7 @@ FileManagerStub::FileManagerStub(char* host, int port, char* dir) : MyConnection
 }
 
 
-vector<string*>* FileManagerStub::listFiles()
+vector<string*>* FileManagerStub::listRemoteFiles()
 {
 	char* buffr;
 	unsigned long data_len;
@@ -27,7 +30,7 @@ vector<string*>* FileManagerStub::listFiles()
 	for (int i = 0; i < files_qty; ++i)
 	{
 		this->receive(buffr, data_len);
-		flist->push_back(new string(buffr));
+		flist->push_back(new string(buffr, data_len));
 		delete[] buffr;
 	}
 
@@ -35,7 +38,13 @@ vector<string*>* FileManagerStub::listFiles()
 }
 
 
-void FileManagerStub::readFile(char* filename, char*& data, unsigned long int& data_len)
+void FileManagerStub::readLocalFile(char* filename, char*& data, unsigned long int& data_len)
+{
+	fm_lcl->readFile(filename, data, data_len);
+}
+
+
+void FileManagerStub::readRemoteFile(char* filename, char*& data, unsigned long int& data_len)
 {
 	int op_type = OP_READ;
 	this->send(op_type);
@@ -45,7 +54,13 @@ void FileManagerStub::readFile(char* filename, char*& data, unsigned long int& d
 }
 
 
-void FileManagerStub::writeFile(char* filename, char* data, unsigned long int data_len)
+void FileManagerStub::writeLocalFile(char* filename, char* data, unsigned long int data_len)
+{
+	fm_lcl->writeFile(filename, data, data_len);
+}
+
+
+void FileManagerStub::writeRemoteFile(char* filename, char* data, unsigned long int data_len)
 {
 	int op_type = OP_WRITE;
 	this->send(op_type);
@@ -68,4 +83,5 @@ void FileManagerStub::freeListedFiles(vector<string*>* file_list)
 FileManagerStub::~FileManagerStub() {
 	int op_type = OP_END;
 	this->send(op_type);
+	delete fm_lcl;
 }
