@@ -42,9 +42,9 @@ int* getNums(int total)
 	int* data = new int[total];
 	int parsed = 0;
 
-	std::cout << "Enter " << total << " number" << (total > 1) ? "s: " : ": ";
+	std::cout << "Enter " << total << " number" << ((total > 1) ? "s: " : ": ");
 	while (parsed < total) {
-		getline(std::cin, input);
+		std::cin >> input;
 		try {
 			data[parsed] = std::stoi(input);
 			++parsed;
@@ -53,6 +53,9 @@ int* getNums(int total)
 			std::cout << "Invalid number (" << input << ")" << std::endl;
 		}
 	}
+	std::cin.get();
+
+	return data;
 }
 
 
@@ -106,6 +109,7 @@ int main()
 			matrix_t* matrix;
 			std::cout << "Please select the size of rows and columns. ";
 			size = getNums(2);
+
 			matrix = mmatrix->createIdentity(size[0], size[1]);
 			delete[] size;
 			matrices[last_id++] = matrix;
@@ -114,7 +118,7 @@ int main()
 		else if (command == "show") {
 			std::cout << "Currently available matrices:" << std::endl;
 			for (auto it = matrices.begin(); it != matrices.end(); ++it)
-				std::cout << "\t- " << it->first << std::endl;
+				std::cout << "\t" << it->first << ". " << it->second->rows << "x" << it->second->cols << std::endl;
 
 			int* choice;
 			std::cout << "Select your choice, or a non-existant one to ignore this. ";
@@ -132,10 +136,9 @@ int main()
 		}
 
 		else if (command == "mult") {
-			std::cout << "Available matrices: ";
+			std::cout << "Currently available matrices:" << std::endl;
 			for (auto it = matrices.begin(); it != matrices.end(); ++it)
-				std::cout << it->first << " ";
-			std::cout << std::endl;
+				std::cout << "\t" << it->first << ". " << it->second->rows << "x" << it->second->cols << std::endl;
 
 			int* choices;
 			std::cout << "Choose the matrices to multiply together. ";
@@ -174,10 +177,9 @@ int main()
 		}
 
 		else if (command == "save") {
-			std::cout << "Available matrices: ";
+			std::cout << "Currently available matrices:" << std::endl;
 			for (auto it = matrices.begin(); it != matrices.end(); ++it)
-				std::cout << it->first << " ";
-			std::cout << std::endl;
+				std::cout << "\t" << it->first << ". " << it->second->rows << "x" << it->second->cols << std::endl;
 
 			int* choices;
 			std::cout << "Choose the matrix to save. ";
@@ -185,7 +187,7 @@ int main()
 
 			if (matrices.find(choices[0]) != matrices.end())
 			{
-				std::cout << "Please enter file to load: ";
+				std::cout << "Please enter file to save: ";
 				std::string filename = getInput();
 				if (filename.empty()) {
 					std::cout << "Filename can't be empty" << std::endl;
