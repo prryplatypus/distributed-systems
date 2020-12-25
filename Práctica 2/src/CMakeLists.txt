@@ -5,8 +5,8 @@ cmake_minimum_required (VERSION 3.8)
 
 set(CMAKE_BUILD_TYPE Debug)
 
-project ("FileManagerMain")
-add_subdirectory ("FileManagerMain")
+project ("FileManager")
+add_subdirectory ("FileManager")
 
 project ("MultMatrixMain")
-add_subdirectory ("MultMatrixMain")
+add_subdirectory ("MultMatrix")
