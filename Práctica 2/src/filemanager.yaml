@@ -1,0 +1,18 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: filemanager 
+spec: 
+  selector: 
+    matchLabels: 
+      slavetype: filemanager 
+  replicas: 1
+  template: 
+    metadata: 
+      labels: 
+        slavetype: filemanager 
+    spec: 
+      containers: 
+      - name: filemanager
+        image: docker.io/prryplatypus/filemanager:1.0.0
+        imagePullPolicy: Always
