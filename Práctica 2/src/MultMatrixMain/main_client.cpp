@@ -1,5 +1,5 @@
 /**
- * Néstor Pérez
+ * Nï¿½stor Pï¿½rez
  * github.com/prryplatypus
  */
 #include <map>
@@ -59,12 +59,26 @@ int* getNums(int total)
 }
 
 
-int main()
+int main(int argc, char* argv[])
 {
-	bool stop = false;
-	unsigned last_id = 0;
+	if (argc < 3) {
+		std::cout << "ERROR: Please make sure you provide all required parameters (";
+		std::cout << argv[0] << " <ip> <port>)" << std::endl;
+		return -1;
+	}
+
+	MultMatrixStub* mmatrix;
+	try {
+		mmatrix = new MultMatrixStub(argv[1], std::stoi(argv[2]));
+	}
+	catch (std::invalid_argument) {
+		std::cout << "Invalid port provided" << std::endl;
+		return -1;
+	}
+
 	std::map<unsigned, matrix_t*> matrices;
-	MultMatrixStub* mmatrix = new MultMatrixStub("192.168.1.85", 8081);
+	unsigned last_id = 0;
+	bool stop = false;
 
 	std::cout << "Available commands:" << std::endl;
 	std::cout << "\t- create: Creates a matrix of the given size for you to fill in" << std::endl;

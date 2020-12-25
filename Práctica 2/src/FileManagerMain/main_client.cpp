@@ -1,5 +1,5 @@
 /**
- * Néstor Pérez
+ * Nï¿½stor Pï¿½rez
  * github.com/prryplatypus
  */
 #include <iostream>
@@ -30,11 +30,24 @@ std::string extractParameters(std::string input)
 }
 
 
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
-	bool stop = false;
-	FileManagerStub* fm = new FileManagerStub("192.168.1.85", 8081, "./dirprueba");
+	if (argc < 3) {
+		std::cout << "ERROR: Please make sure you provide all required parameters (";
+		std::cout << argv[0] << " <ip> <port>)" << std::endl;
+		return -1;
+	}
 
+	FileManagerStub* fm;
+	try {
+		fm = nnew FileManagerStub(argv[1], std::stoi(argv[2]), "./dirprueba");
+	}
+	catch (std::invalid_argument) {
+		std::cout << "Invalid port provided" << std::endl;
+		return -1;
+	}
+
+	bool stop = false;
 	std::cout << "Available commands:" << std::endl;
 	std::cout << "\t- ls" << std::endl;
 	std::cout << "\t- up" << std::endl;
