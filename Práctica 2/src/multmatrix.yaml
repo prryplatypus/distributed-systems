@@ -16,3 +16,5 @@ spec:
       - name: multmatrix
         image: docker.io/prryplatypus/multmatrix:1.0.0
         imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
