@@ -14,7 +14,7 @@ spec:
     spec: 
       containers: 
       - name: filemanager
-        image: docker.io/prryplatypus/filemanager:1.0.0
+        image: docker.io/prryplatypus/filemanager:1.0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8081

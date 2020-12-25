@@ -6,7 +6,7 @@ RUN apt-get update \
     && apt-get install -y software-properties-common
 
 COPY fmmain_server ./
-COPY dirprueba ./
+ADD dirprueba ./dirprueba
 
 EXPOSE 8081
 
