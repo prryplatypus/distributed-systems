@@ -5,8 +5,9 @@ WORKDIR /application
 RUN apt-get update \
     && apt-get install -y software-properties-common
 
-COPY server /application
+COPY fmmain_server ./
+COPY dirprueba ./
 
-EXPOSE 80
+EXPOSE 8081
 
-CMD ["./server"]
+CMD ["./fmmain_server"]

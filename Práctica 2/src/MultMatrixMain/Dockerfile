@@ -1,10 +1,12 @@
 FROM ubuntu:20.04
 
-RUN apt-get update
-RUN apt-get install -y software-properties-common
-RUN apt-get update
-RUN apt-get install -y apache2
+WORKDIR /application
 
-EXPOSE 80
+RUN apt-get update \
+    && apt-get install -y software-properties-common
 
-CMD apachectl -DFOREGROUND
+COPY mmmain_server ./
+
+EXPOSE 8081
+
+CMD ["./mmmain_server"]
