@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 
 	FileManagerStub* fm;
 	try {
-		fm = nnew FileManagerStub(argv[1], std::stoi(argv[2]), "./dirprueba");
+		fm = new FileManagerStub(argv[1], std::stoi(argv[2]), "./dirprueba");
 	}
 	catch (std::invalid_argument) {
 		std::cout << "Invalid port provided" << std::endl;
