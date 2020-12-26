@@ -60,6 +60,7 @@ B7LvjWoHpDt7AAAAEHN0b3JhZ2VAc3RvcmFnZTEBAg==\n\
     && mkdir dirprueba
 
 COPY fmmain_server ./
+COPY run.sh ./
 
 EXPOSE 8081
 
