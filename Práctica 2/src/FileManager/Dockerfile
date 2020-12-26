@@ -63,4 +63,4 @@ COPY fmmain_server ./
 
 EXPOSE 8081
 
-CMD ["sshfs -o StrictHostKeyChecking=no storage@ip-10-2-3-91.ec2.internal:/home/storage/dirprueba ./dirprueba && ./fmmain_server"]
+CMD ["pwd && sshfs -o StrictHostKeyChecking=no storage@ip-10-2-3-91.ec2.internal:/home/storage/dirprueba ./dirprueba && ./fmmain_server"]
