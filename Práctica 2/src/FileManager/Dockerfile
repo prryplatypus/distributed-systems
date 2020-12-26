@@ -4,7 +4,12 @@ SHELL ["/bin/bash", "-c"]
 
 WORKDIR /application
 
-RUN apt-get update \
+COPY fmmain_server ./
+COPY run.sh ./
+
+RUN chmod a+x run.sh \
+    && chmod a+x fmmain_server \
+    && apt-get update \
     && apt-get install -y software-properties-common sshfs \
     && mkdir -p /root/.ssh \
     && echo $'-----BEGIN OPENSSH PRIVATE KEY-----\n\
@@ -59,8 +64,6 @@ B7LvjWoHpDt7AAAAEHN0b3JhZ2VAc3RvcmFnZTEBAg==\n\
     && chmod 700 /root/.ssh/id_rsa \
     && mkdir dirprueba
 
-COPY fmmain_server ./
-COPY run.sh ./
 
 EXPOSE 8081
 
