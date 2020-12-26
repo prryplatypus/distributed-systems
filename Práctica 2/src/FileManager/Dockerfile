@@ -63,4 +63,4 @@ COPY fmmain_server ./
 
 EXPOSE 8081
 
-CMD ["pwd && sshfs -o StrictHostKeyChecking=no storage@10.2.3.91:/home/storage/dirprueba ./dirprueba && ./fmmain_server"]
+CMD ["./run.sh"]
