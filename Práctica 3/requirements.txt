@@ -1,0 +1,6 @@
+argon2-cffi
+aiomysql
+sanic
+sanic-cors
+cerberus
+pyjwt

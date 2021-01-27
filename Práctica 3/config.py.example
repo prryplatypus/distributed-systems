@@ -1,0 +1,9 @@
+from os import getenv
+
+DB_HOST = getenv('MYSQL_HOST')
+DB_NAME = getenv('MYSQL_DATABASE')
+DB_USER = getenv('MYSQL_USER')
+DB_PASS = getenv('MYSQL_PASSWORD')
+
+RSA_PUB_KEY = getenv('RSA_PUB_KEY')
+RSA_PRIV_KEY = getenv('RSA_PRIV_KEY')
