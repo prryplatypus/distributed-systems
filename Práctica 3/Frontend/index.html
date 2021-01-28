@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<style>
+			html, body {
+				min-height: 100vh;
+			}
+		</style>
+	</head>
+	<body class="d-flex">
+		<div class="container">
+			<div class="card">
+				<nav class="card-header">
+					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active" id="nav-sum-tab" data-toggle="tab" href="#nav-sum" role="tab" aria-controls="nav-sum" aria-selected="true">Suma</a>
+						<a class="nav-item nav-link" id="nav-sub-tab" data-toggle="tab" href="#nav-sub" role="tab" aria-controls="nav-sub" aria-selected="true">Resta</a>
+						<a class="nav-item nav-link" id="nav-mul-tab" data-toggle="tab" href="#nav-mul" role="tab" aria-controls="nav-mul" aria-selected="true">Multiplicación</a>
+						<a class="nav-item nav-link" id="nav-div-tab" data-toggle="tab" href="#nav-div" role="tab" aria-controls="nav-div" aria-selected="true">División</a>
+						<a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Módulo</a>
+						<a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Raíz cuadrada</a>
+					</div>
+				</nav>
+				<div class="card-body">
+					<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="nav-sum" role="tabpanel" aria-labelledby="nav-sum-tab">
+							<form>
+								<div class="form-group">
+								  	<input type="number" class="form-control" id="op1sum" aria-describedby="SumOp1" placeholder="0" required>
+								</div>
+								<div class="form-group">
+								  	<input type="number" class="form-control" id="op2sum" aria-describedby="SumOp2" placeholder="0" required>
+								</div>
+								<button type="submit" class="btn btn-primary">Calcular</button>
+							</form>
+						</div>
+
+						<div class="tab-pane fade" id="nav-sub" role="tabpanel" aria-labelledby="nav-sub-tab">
+							<form>
+								<div class="form-group">
+								  	<input type="number" class="form-control" id="op1sub" aria-describedby="SubOp1" placeholder="0" required>
+								</div>
+								<div class="form-group">
+								  	<input type="number" class="form-control" id="op2sub" aria-describedby="SubOp2" placeholder="0" required>
+								</div>
+								<button type="submit" class="btn btn-primary">Calcular</button>
+							</form>
+						</div>
+
+						<div class="tab-pane fade" id="nav-mul" role="tabpanel" aria-labelledby="nav-mul-tab">
+							<form>
+								<div class="form-group">
+								  	<input type="number" class="form-control" id="op1mul" aria-describedby="MulOp1" placeholder="0" required>
+								</div>
+								<div class="form-group">
+								  	<input type="number" class="form-control" id="op2mul" aria-describedby="MulOp2" placeholder="0" required>
+								</div>
+								<button type="submit" class="btn btn-primary">Calcular</button>
+							</form>
+						</div>
+
+						<div class="tab-pane fade" id="nav-div" role="tabpanel" aria-labelledby="nav-div-tab">
+							<form>
+								<div class="form-group">
+								  	<input type="number" class="form-control" id="op1div" aria-describedby="DivOp1" placeholder="0" required>
+								</div>
+								<div class="form-group">
+									<input type="number" class="form-control" id="op2div" aria-describedby="DivOp2" placeholder="1" min="1" required>
+									<small id="op2divhelp" class="form-text text-muted">Este valor debe ser mayor o igual a uno.</small>
+								</div>
+								<button type="submit" class="btn btn-primary">Calcular</button>
+							</form>
+						</div>
+
+						<div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+					  		Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>
