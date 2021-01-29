@@ -83,24 +83,6 @@ async def divide(request):
     })
 
 
-@math.route('/sqrt', methods=['POST', 'OPTIONS'])
-@validate_json({
-    'op1': {'type': 'number', 'required': True, 'min': 0},
-})
-async def sqrt(request):
-    import math
-
-    op1 = request.json.get('op1')
-    
-    result = math.sqrt(op1)
-    calc = await Calculation.create(op=CalculationOp.SQRT, op1=op1, res=result)
-
-    return json({
-        'id': calc.id,
-        'result': result
-    })
-
-
 @math.route('/modulo', methods=['POST', 'OPTIONS'])
 @validate_json({
     'op1': {'type': 'number', 'required': True},
@@ -113,6 +95,24 @@ async def modulo(request):
     result = op1 % op2
     calc = await Calculation.create(op=CalculationOp.MOD, op1=op1,
                                     op2=op2, res=result)
+
+    return json({
+        'id': calc.id,
+        'result': result
+    })
+
+
+@math.route('/sqrt', methods=['POST', 'OPTIONS'])
+@validate_json({
+    'op1': {'type': 'number', 'required': True, 'min': 0},
+})
+async def sqrt(request):
+    import math
+
+    op1 = request.json.get('op1')
+    
+    result = math.sqrt(op1)
+    calc = await Calculation.create(op=CalculationOp.SQRT, op1=op1, res=result)
 
     return json({
         'id': calc.id,

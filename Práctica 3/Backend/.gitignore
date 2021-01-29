@@ -138,3 +138,6 @@ dmypy.json
 cython_debug/
 
 config.py
+Scripts/
+Include/
+pyvenv.cfg

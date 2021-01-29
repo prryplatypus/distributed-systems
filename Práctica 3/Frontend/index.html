@@ -29,46 +29,46 @@
 						<div class="tab-pane fade show active" id="nav-sum" role="tabpanel" aria-labelledby="nav-sum-tab">
 							<form id="sum">
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op1" id="op1sum" aria-describedby="SumOp1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1" placeholder="0" required>
 								</div>
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op2" id="op2sum" aria-describedby="SumOp2" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op2" placeholder="0" required>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
 							</form>
 						</div>
 
 						<div class="tab-pane fade" id="nav-sub" role="tabpanel" aria-labelledby="nav-sub-tab">
-							<form>
+							<form id="sub">
 								<div class="form-group">
-								  	<input type="number" class="form-control" id="op1sub" aria-describedby="SubOp1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1" placeholder="0" required>
 								</div>
 								<div class="form-group">
-								  	<input type="number" class="form-control" id="op2sub" aria-describedby="SubOp2" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op2" placeholder="0" required>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
 							</form>
 						</div>
 
 						<div class="tab-pane fade" id="nav-mul" role="tabpanel" aria-labelledby="nav-mul-tab">
-							<form>
+							<form id="mul">
 								<div class="form-group">
-								  	<input type="number" class="form-control" id="op1mul" aria-describedby="MulOp1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1" placeholder="0" required>
 								</div>
 								<div class="form-group">
-								  	<input type="number" class="form-control" id="op2mul" aria-describedby="MulOp2" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op2" placeholder="0" required>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
 							</form>
 						</div>
 
 						<div class="tab-pane fade" id="nav-div" role="tabpanel" aria-labelledby="nav-div-tab">
-							<form>
+							<form id="div">
 								<div class="form-group">
-								  	<input type="number" class="form-control" id="op1div" aria-describedby="DivOp1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1" placeholder="0" required>
 								</div>
 								<div class="form-group">
-									<input type="number" class="form-control" id="op2div" aria-describedby="DivOp2" placeholder="1" min="1" required>
+									<input type="number" class="form-control" name="op2" placeholder="1" min="1" required>
 									<small id="op2divhelp" class="form-text text-muted">Este valor debe ser mayor o igual a uno.</small>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
@@ -76,12 +76,12 @@
 						</div>
 
 						<div class="tab-pane fade" id="nav-mod" role="tabpanel" aria-labelledby="nav-mod-tab">
-							<form>
+							<form id="mod">
 								<div class="form-group">
-								  	<input type="number" class="form-control" id="op1mod" aria-describedby="ModOp1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1"placeholder="0" required>
 								</div>
 								<div class="form-group">
-									<input type="number" class="form-control" id="op2mod" aria-describedby="ModOp2" placeholder="1" min="1" required>
+									<input type="number" class="form-control" name="op2" placeholder="1" min="1" required>
 									<small id="op2modhelp" class="form-text text-muted">Este valor debe ser mayor o igual a uno.</small>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
@@ -89,9 +89,9 @@
 						</div>
 
 						<div class="tab-pane fade" id="nav-sqrt" role="tabpanel" aria-labelledby="nav-sqrt-tab">
-							<form>
+							<form id="sqrt">
 								<div class="form-group">
-									<input type="number" class="form-control" id="op1sqrt" aria-describedby="SqrtOp1" placeholder="0" min="0" required>
+									<input type="number" class="form-control" name="op1" placeholder="0" min="0" required>
 									<small id="op2sqrthelp" class="form-text text-muted">Este valor debe ser mayor o igual a cero.</small>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
@@ -140,11 +140,30 @@
 						do_request('/math/add', {op1: op1, op2: op2})
 							.done(show_result);
 						break;
+					case "sub":
+						do_request('/math/subtract', {op1: op1, op2: op2})
+							.done(show_result);
+						break;
+					case "mul":
+						do_request('/math/multiply', {op1: op1, op2: op2})
+							.done(show_result);
+						break;
+					case "div":
+						do_request('/math/divide', {op1: op1, op2: op2})
+							.done(show_result);
+						break;
+					case "mod":
+						do_request('/math/modulo', {op1: op1, op2: op2})
+							.done(show_result);
+						break;
+					case "sqrt":
+						do_request('/math/sqrt', {op1: op1})
+							.done(show_result);
+						break;
 					default:
 						console.info("Not handling form with JS");
 						return;
 				}
-
 			});
 		</script>
 	</body>
