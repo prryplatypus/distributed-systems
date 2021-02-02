@@ -49,3 +49,15 @@ class Calculation(object):
         result = await pool.fetchone(query, *params)
 
         return cls(**dict(result))
+
+    @classmethod
+    async def find(cls, *, id: int) -> Optional[cls]:
+        query = """ SELECT * FROM calculations
+                    WHERE id = %s
+                    LIMIT 1
+                """
+        params = [id]
+        
+        result = await pool.fetchone(query, *params)
+
+        return cls(**dict(result)) if result is not None else None

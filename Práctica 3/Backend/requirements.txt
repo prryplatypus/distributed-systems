@@ -1,6 +1,7 @@
-argon2-cffi
 aiomysql
+argon2-cffi
+cerberus
+cryptography
+pyjwt
 sanic
 sanic-cors
-cerberus
-pyjwt

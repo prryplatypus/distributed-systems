@@ -19,4 +19,4 @@ class App(Sanic):
 
 if __name__ == '__main__':
     app = App(__name__)
-    app.run(host='0.0.0.0', port=8000, access_log=False, debug=False)
+    app.run(host='0.0.0.0', port=8000, access_log=False, debug=True)

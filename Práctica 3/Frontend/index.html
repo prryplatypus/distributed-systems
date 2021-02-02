@@ -12,8 +12,8 @@
 		</style>
 	</head>
 	<body class="d-flex">
-		<div class="container">
-			<div class="card">
+		<div class="container d-flex">
+			<div class="card my-auto w-100">
 				<nav class="card-header">
 					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
 						<a class="nav-item nav-link active" id="nav-sum-tab" data-toggle="tab" href="#nav-sum" role="tab" aria-controls="nav-sum" aria-selected="true">Suma</a>
@@ -22,6 +22,7 @@
 						<a class="nav-item nav-link" id="nav-div-tab" data-toggle="tab" href="#nav-div" role="tab" aria-controls="nav-div" aria-selected="true">División</a>
 						<a class="nav-item nav-link" id="nav-mod-tab" data-toggle="tab" href="#nav-mod" role="tab" aria-controls="nav-mod" aria-selected="true">Módulo</a>
 						<a class="nav-item nav-link" id="nav-sqrt-tab" data-toggle="tab" href="#nav-sqrt" role="tab" aria-controls="nav-sqrt" aria-selected="true">Raíz Cuadrada</a>
+						<a class="nav-item nav-link" id="nav-hist-tab" data-toggle="tab" href="#nav-hist" role="tab" aria-controls="nav-hist" aria-selected="true">Histórico</a>
 					</div>
 				</nav>
 				<div class="card-body">
@@ -97,6 +98,24 @@
 								<button type="submit" class="btn btn-primary">Calcular</button>
 							</form>
 						</div>
+
+						<div class="tab-pane fade" id="nav-hist" role="tabpanel" aria-labelledby="nav-hist-tab">
+							<form id="hist">
+								<div class="form-group">
+									<small class="form-text text-muted">ID de la operación</small>
+									<input type="number" class="form-control" name="id" placeholder="0" min="0" required>
+									<small class="form-text text-muted">Op1</small>
+									<input type="number" class="form-control" name="op1" placeholder="0" min="0" disabled>
+									<small class="form-text text-muted">Op2</small>
+									<input type="number" class="form-control" name="op2" placeholder="0" min="0" disabled>
+									<small class="form-text text-muted">Op</small>
+									<input type="text" class="form-control" name="op" placeholder="0" min="0" disabled>
+									<small class="form-text text-muted">Resultado</small>
+									<input type="number" class="form-control" name="res" placeholder="0" min="0" disabled>
+								</div>
+								<button type="submit" class="btn btn-primary">Buscar</button>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -109,6 +128,7 @@
 
 		<script type="text/javascript">
 			const BASE = 'http://127.0.0.1:8000/api/v1';
+			var TOKEN = null; // We should probz use cookies or smthg, but good enough for a demo lol
 
 			function show_result(data) {
 				swal({
@@ -118,13 +138,80 @@
 				});
 			}
 
-			function do_request(route, data) {
-				return $.ajax({
+			function handle_unauthorized() {
+			    swal({
+					icon: "warning",
+					text: "Introduce tu nombre de usuario",
+  					content: "input",
+  					button: {
+    					text: "Siguiente",
+    					closeModal: false,
+  					}
+				})
+				.then(username => {
+  					if (!username) throw null;
+					return username;
+				})
+				.then(username => {
+					return swal({
+						text: "Introduce tu contraseña",
+  						content: "input",
+  						button: {
+    						text: "Login",
+    						closeModal: false,
+  						}
+					})
+					.then(password => {
+  						if (!password) throw null;
+						return {username, password};
+					})
+				})
+				.then(creds => {
+					$.ajax({
+						type: "POST",
+						url: BASE + '/auth/login',
+						data: JSON.stringify({username: creds.username, password: creds.password}),
+						dataType: "json"
+					})
+					.done(function(data){
+						TOKEN = data.token;
+						swal({
+							icon: "success",
+							title: "Inicio de sesión correcto",
+						});
+					})
+					.fail(function(xhr, status, error) {
+						swal({
+							icon: "error",
+							title: "Inicio de sesión fallido",
+						});
+					});
+				})
+				.catch(err => {
+  					swal.stopLoading();
+    				swal.close();
+  				});
+			}
+
+			function do_request(route, data, callback) {
+				if (TOKEN === null) {
+					handle_unauthorized();
+					return;
+				}
+
+				$.ajax({
 					type: "POST",
 					url: BASE + route,
+					headers: {
+						'Authorization': token
+					},
 					data: JSON.stringify(data),
-					dataType: "json"
+					dataType: "json",
+					statusCode: {
+						401: handle_unauthorized
+					}
 				})
+				.done(callback);
 			}
 
 			$('form').submit(function(event){
@@ -137,32 +224,32 @@
 				var res = null;
 				switch($form.attr('id')) {
 					case "sum":
-						do_request('/math/add', {op1: op1, op2: op2})
-							.done(show_result);
+						do_request('/math/add', {op1: op1, op2: op2}, show_result);
 						break;
 					case "sub":
-						do_request('/math/subtract', {op1: op1, op2: op2})
-							.done(show_result);
+						do_request('/math/subtract', {op1: op1, op2: op2}, show_result);
 						break;
 					case "mul":
-						do_request('/math/multiply', {op1: op1, op2: op2})
-							.done(show_result);
+						do_request('/math/multiply', {op1: op1, op2: op2}, show_result);
 						break;
 					case "div":
-						do_request('/math/divide', {op1: op1, op2: op2})
-							.done(show_result);
+						do_request('/math/divide', {op1: op1, op2: op2}, show_result);
 						break;
 					case "mod":
-						do_request('/math/modulo', {op1: op1, op2: op2})
-							.done(show_result);
+						do_request('/math/modulo', {op1: op1, op2: op2}, show_result);
 						break;
 					case "sqrt":
-						do_request('/math/sqrt', {op1: op1})
-							.done(show_result);
+						do_request('/math/sqrt', {op1: op1}, show_result);
 						break;
 					default:
 						console.info("Not handling form with JS");
 						return;
+				}
+			});
+		
+			$(document).ready(function() {
+    			if (TOKEN === null) {
+					handle_unauthorized();
 				}
 			});
 		</script>

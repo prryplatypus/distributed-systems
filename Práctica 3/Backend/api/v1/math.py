@@ -1,5 +1,5 @@
 from sanic import Blueprint
-from sanic.exceptions import InvalidUsage
+from sanic.exceptions import InvalidUsage, NotFound
 from sanic.response import json
 from decorators import validate_json, authenticate
 from database.models import Calculation, CalculationOp
@@ -7,7 +7,24 @@ from database.models import Calculation, CalculationOp
 
 math = Blueprint('math', url_prefix='/math')
 
+@math.route('/history/<id:int>', methods=['GET', 'OPTIONS'])
+# @authenticate
+async def get(request, id):
+    calc = await Calculation.find(id=id)
+
+    if not calc:
+        raise NotFound()
+    
+    return json({
+        'id': calc.id,
+        'op': calc.op.value,
+        'op1': calc.op1,
+        'op2': calc.op2,
+        'result': calc.res
+    })
+
 @math.route('/add', methods=['POST', 'OPTIONS'])
+@authenticate
 @validate_json({
     'op1': {'type': 'number', 'required': True},
     'op2': {'type': 'number', 'required': True}
@@ -27,6 +44,7 @@ async def add(request):
 
 
 @math.route('/subtract', methods=['POST', 'OPTIONS'])
+@authenticate
 @validate_json({
     'op1': {'type': 'number', 'required': True},
     'op2': {'type': 'number', 'required': True}
@@ -46,6 +64,7 @@ async def subtract(request):
 
 
 @math.route('/multiply', methods=['POST', 'OPTIONS'])
+@authenticate
 @validate_json({
     'op1': {'type': 'number', 'required': True},
     'op2': {'type': 'number', 'required': True}
@@ -65,6 +84,7 @@ async def multiply(request):
 
 
 @math.route('/divide', methods=['POST', 'OPTIONS'])
+@authenticate
 @validate_json({
     'op1': {'type': 'number', 'required': True},
     'op2': {'type': 'number', 'required': True, 'forbidden': [0]}
@@ -84,6 +104,7 @@ async def divide(request):
 
 
 @math.route('/modulo', methods=['POST', 'OPTIONS'])
+@authenticate
 @validate_json({
     'op1': {'type': 'number', 'required': True},
     'op2': {'type': 'number', 'required': True, 'forbidden': [0]}
@@ -103,6 +124,7 @@ async def modulo(request):
 
 
 @math.route('/sqrt', methods=['POST', 'OPTIONS'])
+@authenticate
 @validate_json({
     'op1': {'type': 'number', 'required': True, 'min': 0},
 })

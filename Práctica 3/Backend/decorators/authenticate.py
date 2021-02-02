@@ -10,12 +10,14 @@ def authenticate(func):
         auth_hdr = request.headers.get('Authorization', None)
         if not auth_hdr:
             raise Unauthorized("Missing token")
+        
+        return await func(request, *args, **kwargs)
 
         try:
             jwt.decode(token, config.RSA_PUB_KEY,
                        leeway=60, algorithms=['RS256'])
         except Exception:
-            raise errors.InvalidToken()
+            raise Unauthorized("Missing token")
 
         return await func(request, *args, **kwargs)
     return wrapper
