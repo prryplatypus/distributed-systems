@@ -1,0 +1,20 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: calcback 
+spec: 
+  selector: 
+    matchLabels: 
+      slavetype: calcback 
+  replicas: 10
+  template: 
+    metadata: 
+      labels: 
+        slavetype: calcback 
+    spec: 
+      containers: 
+      - name: calcback
+        image: docker.io/prryplatypus/calcback:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

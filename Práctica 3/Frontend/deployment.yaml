@@ -1,0 +1,20 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: calcfront 
+spec: 
+  selector: 
+    matchLabels: 
+      slavetype: calcfront 
+  replicas: 2
+  template: 
+    metadata: 
+      labels: 
+        slavetype: calcfront 
+    spec: 
+      containers: 
+      - name: calcfront
+        image: docker.io/prryplatypus/calcfront:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
