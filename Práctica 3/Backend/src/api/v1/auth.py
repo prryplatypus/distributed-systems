@@ -41,8 +41,11 @@ async def login(request):
             algorithm='RS256'
         )
 
+        if isinstance(token, bytes):
+            token = token.decode()
+
         return json({
-            'token': token.decode()
+            'token': token
         })
 
     raise Unauthorized("Invalid login credentials")
@@ -78,6 +81,9 @@ async def create(request):
         algorithm='RS256'
     )
 
+    if isinstance(token, bytes):
+        token = token.decode()
+
     return json({
-        'token': token.decode()
+        'token': token
     })
