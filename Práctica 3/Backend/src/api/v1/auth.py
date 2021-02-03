@@ -42,7 +42,7 @@ async def login(request):
         )
 
         return json({
-            'token': token
+            'token': token.decode()
         })
 
     raise Unauthorized("Invalid login credentials")
@@ -79,5 +79,5 @@ async def create(request):
     )
 
     return json({
-        'token': token
+        'token': token.decode()
     })
