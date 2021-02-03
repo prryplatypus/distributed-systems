@@ -10,6 +10,7 @@ RUN apt-get update \
         software-properties-common \
         python3 \
         python3-dev \
+        python3-pip \
         make \
         gcc \
         musl-dev \
