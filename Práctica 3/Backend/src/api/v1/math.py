@@ -8,12 +8,12 @@ from database.models import Calculation, CalculationOp
 math = Blueprint('math', url_prefix='/math')
 
 @math.route('/history/<id:int>', methods=['GET', 'OPTIONS'])
-# @authenticate
+@authenticate
 async def get(request, id):
     calc = await Calculation.find(id=id)
 
     if not calc:
-        raise NotFound()
+        raise NotFound("Calculation not found")
     
     return json({
         'id': calc.id,
