@@ -5,7 +5,7 @@ WORKDIR /application
 COPY ./src /application
 
 RUN apt-get update \
-    && apt-get install -y \
+    && DEBIAN_FRONTEND="noninteractive" TZ="Europe/Madrid" apt-get install -y \
         software-properties-common \
         python3 \
         python3-dev \
