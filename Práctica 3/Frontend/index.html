@@ -203,7 +203,7 @@
 					type: "POST",
 					url: BASE + route,
 					headers: {
-						'Authorization': token
+						'Authorization': TOKEN
 					},
 					data: JSON.stringify(data),
 					dataType: "json",
@@ -212,6 +212,37 @@
 					}
 				})
 				.done(callback);
+			}
+
+			function get_historic(id) {
+				if (TOKEN === null) {
+					handle_unauthorized();
+					return;
+				}
+
+				$.ajax({
+					type: "GET",
+					url: BASE + '/math/history/' + id,
+					headers: {
+						'Authorization': TOKEN
+					},
+					statusCode: {
+						401: handle_unauthorized,
+						404: function() {
+							swal({
+								icon: "error",
+								text: "Cálculo no encontrado"
+							}).catch(err => {});
+						}
+					}
+				})
+				.done(function(data) {
+					var $form = $('#hist');
+					$form.find('input[name="op1"]').val(data.op1);
+					$form.find('input[name="op2"]').val(data.op2);
+					$form.find('input[name="op"]').val(data.op);
+					$form.find('input[name="res"]').val(data.result);
+				});
 			}
 
 			$('form').submit(function(event){
@@ -240,6 +271,9 @@
 						break;
 					case "sqrt":
 						do_request('/math/sqrt', {op1: op1}, show_result);
+						break;
+					case "hist":
+						get_historic(Number($form.find("input[name='id']").val()));
 						break;
 					default:
 						console.info("Not handling form with JS");
