@@ -1,0 +1,7 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mariadb
+spec:
+  type: ExternalName
+  externalName: practica3.cjncacoqn0md.us-east-1.rds.amazonaws.com
