@@ -30,10 +30,10 @@
 						<div class="tab-pane fade show active" id="nav-sum" role="tabpanel" aria-labelledby="nav-sum-tab">
 							<form id="sum">
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1" placeholder="0" step="any" required>
 								</div>
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op2" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op2" placeholder="0" step="any" required>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
 							</form>
@@ -42,10 +42,10 @@
 						<div class="tab-pane fade" id="nav-sub" role="tabpanel" aria-labelledby="nav-sub-tab">
 							<form id="sub">
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1" placeholder="0" step="any" required>
 								</div>
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op2" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op2" placeholder="0" step="any" required>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
 							</form>
@@ -54,10 +54,10 @@
 						<div class="tab-pane fade" id="nav-mul" role="tabpanel" aria-labelledby="nav-mul-tab">
 							<form id="mul">
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1" placeholder="0" step="any" required>
 								</div>
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op2" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op2" placeholder="0" step="any" required>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
 							</form>
@@ -66,10 +66,10 @@
 						<div class="tab-pane fade" id="nav-div" role="tabpanel" aria-labelledby="nav-div-tab">
 							<form id="div">
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op1" placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1" placeholder="0" step="any" required>
 								</div>
 								<div class="form-group">
-									<input type="number" class="form-control" name="op2" placeholder="1" min="1" required>
+									<input type="number" class="form-control" name="op2" placeholder="1" min="1" step="any" required>
 									<small id="op2divhelp" class="form-text text-muted">Este valor debe ser mayor o igual a uno.</small>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
@@ -79,10 +79,10 @@
 						<div class="tab-pane fade" id="nav-mod" role="tabpanel" aria-labelledby="nav-mod-tab">
 							<form id="mod">
 								<div class="form-group">
-								  	<input type="number" class="form-control" name="op1"placeholder="0" required>
+								  	<input type="number" class="form-control" name="op1"placeholder="0" step="any" required>
 								</div>
 								<div class="form-group">
-									<input type="number" class="form-control" name="op2" placeholder="1" min="1" required>
+									<input type="number" class="form-control" name="op2" placeholder="1" min="1" step="any" required>
 									<small id="op2modhelp" class="form-text text-muted">Este valor debe ser mayor o igual a uno.</small>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
@@ -92,7 +92,7 @@
 						<div class="tab-pane fade" id="nav-sqrt" role="tabpanel" aria-labelledby="nav-sqrt-tab">
 							<form id="sqrt">
 								<div class="form-group">
-									<input type="number" class="form-control" name="op1" placeholder="0" min="0" required>
+									<input type="number" class="form-control" name="op1" placeholder="0" min="0" step="any" required>
 									<small id="op2sqrthelp" class="form-text text-muted">Este valor debe ser mayor o igual a cero.</small>
 								</div>
 								<button type="submit" class="btn btn-primary">Calcular</button>
@@ -105,13 +105,13 @@
 									<small class="form-text text-muted">ID de la operación</small>
 									<input type="number" class="form-control" name="id" placeholder="0" min="0" required>
 									<small class="form-text text-muted">Op1</small>
-									<input type="number" class="form-control" name="op1" placeholder="0" min="0" disabled>
+									<input type="number" class="form-control" name="op1" placeholder="0" min="0" step="any" disabled>
 									<small class="form-text text-muted">Op2</small>
-									<input type="number" class="form-control" name="op2" placeholder="0" min="0" disabled>
+									<input type="number" class="form-control" name="op2" placeholder="0" min="0" step="any" disabled>
 									<small class="form-text text-muted">Op</small>
-									<input type="text" class="form-control" name="op" placeholder="0" min="0" disabled>
+									<input type="text" class="form-control" name="op" placeholder="0" min="0" step="any" disabled>
 									<small class="form-text text-muted">Resultado</small>
-									<input type="number" class="form-control" name="res" placeholder="0" min="0" disabled>
+									<input type="number" class="form-control" name="res" placeholder="0" min="0" step="any" disabled>
 								</div>
 								<button type="submit" class="btn btn-primary">Buscar</button>
 							</form>
